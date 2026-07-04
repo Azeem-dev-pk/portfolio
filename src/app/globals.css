@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CSS Variables for theme colors ===== */
+:root {
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-card-alt: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-success: #10b981;
+  --color-glow: rgba(5, 150, 105, 0.2);
+}
+
+.dark {
+  --color-bg: #022c22;
+  --color-card: #064e3b;
+  --color-card-alt: #112a21;
+  --color-border: #065f46;
+  --color-accent: #10b981;
+  --color-accent-hover: #22c55e;
+  --color-text: #f0fdf4;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-success: #22c55e;
+  --color-glow: rgba(16, 185, 129, 0.25);
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: "Inter", system-ui, sans-serif;
+    @apply antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-hover);
+  }
+}
+
+/* ===== Utility Classes ===== */
+@layer components {
+  .section-container {
+    @apply mx-auto max-w-6xl px-4;
+  }
+
+  @media (min-width: 640px) {
+    .section-container {
+      @apply px-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-container {
+      @apply px-8;
+    }
+  }
+
+  .section-padding {
+    @apply py-20;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      @apply py-28;
+    }
+  }
+
+  .glass-card {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    @apply rounded-2xl shadow-sm;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-success)
+    );
+  }
+
+  .accent-btn {
+    background: var(--color-accent);
+    color: #ffffff;
+    @apply inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold;
+    @apply transition-all duration-300;
+    box-shadow: 0 0 20px var(--color-glow);
+  }
+
+  .accent-btn:hover {
+    box-shadow: 0 0 30px var(--color-glow), 0 0 60px var(--color-glow);
+    transform: scale(1.05);
+  }
+
+  .outline-btn {
+    @apply inline-flex items-center gap-2 rounded-xl border-2 px-6 py-3 font-semibold;
+    @apply transition-all duration-300;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .outline-btn:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .tech-tag {
+    background: var(--color-card-alt);
+    color: var(--color-accent);
+    @apply inline-block rounded-lg px-3 py-1.5 text-xs font-mono font-medium;
+    border: 1px solid var(--color-border);
+  }
+
+  .section-label {
+    color: var(--color-accent);
+    @apply mb-2 font-mono text-sm font-semibold uppercase tracking-widest;
+  }
+
+  .section-heading {
+    color: var(--color-text);
+    @apply text-3xl font-bold;
+  }
+
+  @media (min-width: 768px) {
+    .section-heading {
+      @apply text-4xl;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-heading {
+      @apply text-5xl;
+    }
+  }
+}

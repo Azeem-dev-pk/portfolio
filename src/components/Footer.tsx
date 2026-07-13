@@ -11,7 +11,7 @@ const FOOTER_LINKS = [
 ] as const;
 
 export default function Footer() {
-  const year = new Date().getFullYear();
+  // const year = new Date().getFullYear();
 
   return (
     <footer
@@ -83,12 +83,11 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
           <p
-            className="text-xs"
-            style={{ color: "var(--color-text-muted)" }}
-          >
-            &copy; {year} AzeemX | Full-Stack Next.js, TypeScript, &amp; Python
-            Engineer. All rights reserved.
-          </p>
+  className="text-xs"
+  style={{ color: "var(--color-text-muted)" }}
+>
+  &copy; {new Date().getFullYear()} Powered by Azeem<b>X</b>
+</p>   
 
           {/* Social / Top */}
           <div className="flex items-center gap-4">

@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  // Additional metadata properties can be added here as needed
+  // manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

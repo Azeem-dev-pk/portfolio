@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 interface FormState {
   name: string;
@@ -76,12 +77,27 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulated form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+try {
+  await emailjs.send(
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+    {
+      from_name: form.name,
+      from_email: form.email,
+      subject: form.subject,
+      message: form.message,
+    },
+    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+  );
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setForm(INITIAL_FORM);
+  setIsSubmitted(true);
+  setForm(INITIAL_FORM);
+} catch (error) {
+  console.error(error);
+  alert("Failed to send message.");
+} finally {
+  setIsSubmitting(false);
+}
 
     setTimeout(() => setIsSubmitted(false), 5000);
   }
